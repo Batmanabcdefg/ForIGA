@@ -1,9 +1,10 @@
 language: c fortran
 sudo: required
 before_install:
-  - sudo apt-get install gfortran cmake
+  - sudo apt-get install gfortran-7 cmake libopenblas-dev liblapack-dev
 
 script:
+- export FC=gfortran-7
 - mkdir build && cd build
 - cmake -DCMAKE_BUILD_TYPE=DEBUG ..
 - make
