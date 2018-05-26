@@ -7,6 +7,9 @@ before_install:
 
 script:
 - export FC=gfortran
+- git submodule init
+- git submodule update
+- mkdir thirdParty/pfunit/mod
 - mkdir build && cd build
 - cmake -DCMAKE_BUILD_TYPE=DEBUG ..
 - make
