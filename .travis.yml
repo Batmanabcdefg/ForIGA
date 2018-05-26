@@ -1,9 +1,17 @@
-os: linux
-dist: bionic
-language: c fortran
+language: fortran
 sudo: required
+cache:
+    apt: true
+addons:
+    apt:
+        packages:
+            -gfortran-6
+            -cmake
+            -libopenblas-dev
+            -liblapack-dev
+
 before_install:
-  - sudo apt-get install gfortran cmake libopenblas-dev liblapack-dev
+  - sudo apt-get
 
 script:
 - export FC=gfortran
