@@ -10,9 +10,6 @@ addons:
             - libopenblas-dev
             - liblapack-dev
 
-before_install:
-  - sudo apt-get
-
 script:
 - export FC=gfortran
 - git submodule init
