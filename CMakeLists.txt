@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(build_test Fortran)
+project(ForIga Fortran)
 
 enable_language(Fortran)
 
