@@ -5,7 +5,7 @@ cache:
 addons:
     apt:
         packages:
-            - gfortran-6
+            - gfortran
             - cmake
             - libopenblas-dev
             - liblapack-dev
