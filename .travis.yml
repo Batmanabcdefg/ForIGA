@@ -5,10 +5,10 @@ cache:
 addons:
     apt:
         packages:
-            -gfortran-6
-            -cmake
-            -libopenblas-dev
-            -liblapack-dev
+            - gfortran-6
+            - cmake
+            - libopenblas-dev
+            - liblapack-dev
 
 before_install:
   - sudo apt-get
