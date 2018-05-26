@@ -32,7 +32,6 @@ set(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR})
 
 # if DEBUG requested, set the various debug options.
 IF(${CMAKE_BUILD_TYPE} MATCHES "DEBUG")
-    set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -O0 -fdiagnostics-color=always")
     IF(${CMAKE_Fortran_COMPILER_ID} MATCHES "GNU")
       set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG}
            -Wall -fcheck=all -fbacktrace -std=f2008 -fcoarray=lib -fprofile-arcs -ftest-coverage")
@@ -45,7 +44,7 @@ IF(${CMAKE_BUILD_TYPE} MATCHES "DEBUG")
 ENDIF(${CMAKE_BUILD_TYPE} MATCHES "DEBUG")
 
 IF(${CMAKE_BUILD_TYPE} MATCHES "RELEASE")
-    set(CMAKE_Fortran_FLAGS_RELEASE "${CMAKE_Fortran_FLAGS_RELEASE} -O3 -std=f2008 -fdiagnostics-color=always")
+    set(CMAKE_Fortran_FLAGS_RELEASE "${CMAKE_Fortran_FLAGS_RELEASE} -O3 -std=f2008")
     IF(${CMAKE_Fortran_COMPILER_ID} MATCHES "GNU")
         set(CMAKE_Fortran_FLAGS_RELEASE "${CMAKE_Fortran_FLAGS_RELEASE} -fcoarray=lib")
     ENDIF(${CMAKE_BUILD_TYPE} MATCHES "GNU")
