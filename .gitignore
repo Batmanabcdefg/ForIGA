@@ -5,3 +5,4 @@ thirdParty/pfunit
 out/*
 .project
 *.json
+*.mod
