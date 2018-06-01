@@ -34,7 +34,7 @@ set(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR})
 IF(${CMAKE_BUILD_TYPE} MATCHES "DEBUG")
     IF(${CMAKE_Fortran_COMPILER_ID} MATCHES "GNU")
       set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG}
-           -Wall -fcheck=all -fbacktrace -std=f2008 -fcoarray=lib -fprofile-arcs -ftest-coverage")
+           -Wall -fcheck=all -fbacktrace -std=f2008 -fcoarray=lib -ffree-form -fprofile-arcs -ftest-coverage")
     ELSEIF(${CMAKE_Fortran_COMPILER_ID} MATCHES "Intel"
         set(CMAKE_Fortran_FLAGS_DEBUG "${CMAKE_Fortran_FLAGS_DEBUG} -warn all -check all -traceback -coarray=shared") )
     ELSE()
