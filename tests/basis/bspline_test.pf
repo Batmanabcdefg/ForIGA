@@ -1,0 +1,118 @@
+module BSplineTests_m
+    use pfunit_mod
+    use BSpline_m
+    use Settings_m
+
+    implicit none
+
+    real ( kind = real_w ), dimension( 1:6 ) :: knots
+    real ( kind = real_w ), parameter :: tol = 1e-5
+
+contains
+
+    @Before
+    subroutine BSplineTestsSetup()
+        knots = (/ 0d0, 0d0, 0d0, 1d0, 1d0, 1d0 /)
+    end subroutine BSplineTestsSetup
+
+    @Test
+    subroutine firstConstBSplineTest()
+        implicit none
+
+        type ( BSplineBasis_t ) :: bspline
+        integer( kind = int_w ), parameter :: index = 1
+        integer( kind = int_w ), parameter :: order = 0
+        real( kind = real_w ) :: N_1_0
+
+        !! We create the needed number of knots for the BSpline, since
+        !! a quadratic spline has to be created each knot value is present in the knot
+        !! vector two times. An additional time it's repeated since an open knot vector is intended
+        bspline = BSplineBasis_t( knots, index, order )
+        N_1_0 = bspline%basisFunc( 0d0 )
+        @assertEqual( N_1_0, 0d0, tolerance = tol )
+
+        N_1_0 = bspline%basisFunc( 1d0 )
+        @assertEqual( N_1_0, 1d0, tolerance = tol )
+    end subroutine firstConstBSplineTest
+
+    @Test
+    subroutine secondConstBSplineTest()
+        
+        type ( BSplineBasis_t ) :: bspline
+        integer( kind = int_w ), parameter :: index = 2
+        integer( kind = int_w ), parameter :: order = 0
+        real( kind = real_w ) :: N_2_0
+        
+        !! We create the needed number of knots for the BSpline, since
+        !! a quadratic spline has to be created each knot value is present in the knot
+        !! vector two times. An additional time it's repeated since an open knot vector is intended
+        bspline = BSplineBasis_t( knots, index, order )
+
+        N_2_0 = bspline%basisFunc( 0d0 )
+        @assertEqual( N_2_0, 0d0, tolerance = tol )
+
+        N_2_0 = bspline%basisFunc( 1d0 )
+        @assertEqual( N_2_0, 0d0, tolerance = tol )
+
+    end subroutine secondConstBSplineTest
+
+    @Test
+    subroutine thirdConstBSplineTest()
+        type ( BSplineBasis_t ) :: bspline
+        integer( kind = int_w ), parameter :: index = 3
+        integer( kind = int_w ), parameter :: order = 0
+        real( kind = real_w ) :: N_3_0
+        
+        !! We create the needed number of knots for the BSpline, since
+        !! a quadratic spline has to be created each knot value is present in the knot
+        !! vector two times. An additional time it's repeated since an open knot vector is intended
+        bspline = BSplineBasis_t( knots, index, order )
+
+        N_3_0 = bspline%basisFunc( 0d0 )
+        @assertEqual( N_3_0, 1d0, tolerance = tol )
+
+        N_3_0 = bspline%basisFunc( 1d0 )
+        @assertEqual( N_3_0, 0d0, tolerance = tol )
+
+    end subroutine thirdConstBSplineTest
+
+    @Test
+    subroutine fourthConstBSplineTest()
+        type ( BSplineBasis_t ) :: bspline
+        integer( kind = int_w ), parameter :: index = 4
+        integer( kind = int_w ), parameter :: order = 0
+        real( kind = real_w ) :: N_4_0
+        
+        !! We create the needed number of knots for the BSpline, since
+        !! a quadratic spline has to be created each knot value is present in the knot
+        !! vector two times. An additional time it's repeated since an open knot vector is intended
+        bspline = BSplineBasis_t( knots, index, order )
+        N_4_0 = computeBasis( knots, index, order, 0d0 )
+        @assertEqual( N_4_0, 1d0, tolerance = tol )
+
+        N_4_0 = computeBasis( knots, index, order, 1d0 )
+        @assertEqual( N_4_0, 0d0, tolerance = tol )
+
+    end subroutine fourthConstBSplineTest
+    
+    @Test
+    subroutine fifthConstBSplineTest()
+        type ( BSplineBasis_t ) :: bspline
+        integer( kind = int_w ), parameter :: index = 5
+        integer( kind = int_w ), parameter :: order = 0
+        real( kind = real_w ) :: N_5_0
+        
+        !! We create the needed number of knots for the BSpline, since
+        !! a quadratic spline has to be created each knot value is present in the knot
+        !! vector two times. An additional time it's repeated since an open knot vector is intended
+        bspline = BSplineBasis_t( knots, index, order )
+
+        N_5_0 = computeBasis( knots, index, order, 0d0 )
+        @assertEqual( N_5_0, 0d0, tolerance = tol )
+
+        N_5_0 = computeBasis( knots, index, order, 1d0 )
+        @assertEqual( N_5_0, 0d0, tolerance = tol )
+    end subroutine fifthConstBSplineTest
+
+
+end module BSplineTests_m
