@@ -1,6 +1,0 @@
-@test
-subroutine test_is_two_true
-    use pfunit_mod
-    implicit none
-    @assertTrue(.true.)
-end subroutine test_is_two_true

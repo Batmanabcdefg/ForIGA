@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 
 project(ForIga Fortran)
 
@@ -51,8 +51,6 @@ IF(${CMAKE_BUILD_TYPE} MATCHES "RELEASE")
     message(STATUS "Release flags for ${CMAKE_Fortran_COMPILER_ID}: ${CMAKE_Fortran_FLAGS_RELEASE}")
 ENDIF(${CMAKE_BUILD_TYPE} MATCHES "RELEASE")
 
-
-include( thirdParty/THIRD_PARTY_SETUP.cmake )
 find_package( BLAS REQUIRED )
 find_package( LAPACK REQUIRED )
 
